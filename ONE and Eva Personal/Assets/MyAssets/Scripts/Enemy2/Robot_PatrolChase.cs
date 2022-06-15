@@ -62,12 +62,9 @@ public class Robot_PatrolChase : MonoBehaviour
             Debug.Log("coliider not null, tag " + hitPlayer.collider.tag);
             if (hitPlayer.collider.gameObject.CompareTag("Player"))
             {
-                // if sprite is not move right, make it move left (for the boss script to flip it correctly)
-                if(movingRight == false)
-                {
-                    Debug.Log("Robo collides with player");
-                    
-                }
+                // set isFlipped in boss script to true(unique gimmick, but it works ok?)
+                GetComponent<Boss>().isFlipped = true;
+                
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 // turn on run script in animator just like for bosses
                 animator.SetBool("isChasing", true);
