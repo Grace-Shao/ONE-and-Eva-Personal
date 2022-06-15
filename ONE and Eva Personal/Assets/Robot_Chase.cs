@@ -34,6 +34,9 @@ public class Robot_Chase : StateMachineBehaviour
             // attack
             animator.SetTrigger("attack");
         }
+
+        // if not on ground, go back to patrol
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -42,16 +45,4 @@ public class Robot_Chase : StateMachineBehaviour
         // when attack ends, reset the attack bool in animator
         animator.ResetTrigger("attack");
     }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }
