@@ -21,15 +21,19 @@ public class Boss : MonoBehaviour
 
 		if (transform.position.x > player.position.x && isFlipped)
 		{
+			Debug.Log("Right side + " + isFlipped);
 			transform.localScale = flipped;
 			transform.Rotate(0f, 180f, 0f);
 			isFlipped = false;
+			Debug.Log("Right side2 + " + isFlipped);
 		}
 		else if (transform.position.x < player.position.x && !isFlipped)
 		{
+			Debug.Log("Left side + " + isFlipped);
 			transform.localScale = flipped;
 			transform.Rotate(0f, 180f, 0f);
 			isFlipped = true;
+			Debug.Log("Left side2 + " + isFlipped);
 		}
 	}
 

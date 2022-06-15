@@ -8,7 +8,7 @@ public class Robot_PatrolChase : MonoBehaviour
     public float groundDetectDist;
     public float detectDist = 10;
 
-    private bool movingRight = true;
+    public bool movingRight = true;
     private Animator animator;
 
     public Transform groundDetection;
@@ -33,23 +33,25 @@ public class Robot_PatrolChase : MonoBehaviour
             if (movingRight == true)
             {
                 // rotate the sprite 180
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
             }
             // if move left
             else
             {
-                transform.eulerAngles = new Vector3(0, -180, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
             }
         }
-        
-        //*******************Chase script*******************//
-        // raycast debugger not being drawn?
+
+        //*******************line of sight script*******************//
         // make a raycast and see it it hits player
         RaycastHit2D hitPlayer = Physics2D.Raycast(lineOfSight.transform.position, Vector2.right, detectDist);
-        Debug.DrawRay(lineOfSight.transform.position, Vector2.right * detectDist, Color.red);
-        if (movingRight == false)
+        if (movingRight)
+        {
+            Debug.DrawRay(lineOfSight.transform.position, Vector2.right * detectDist, Color.red);
+        }
+        else if (movingRight == false)
         {
             hitPlayer = Physics2D.Raycast(lineOfSight.transform.position, Vector2.left, detectDist);
             Debug.DrawRay(lineOfSight.transform.position, Vector2.left * detectDist, Color.red);
@@ -60,10 +62,17 @@ public class Robot_PatrolChase : MonoBehaviour
             Debug.Log("coliider not null, tag " + hitPlayer.collider.tag);
             if (hitPlayer.collider.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Robo collides with player");
+                // if sprite is not move right, make it move left (for the boss script to flip it correctly)
+                if(movingRight == false)
+                {
+                    Debug.Log("Robo collides with player");
+                    
+                }
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 // turn on run script in animator just like for bosses
                 animator.SetBool("isChasing", true);
                 GetComponent<Robot_PatrolChase>().enabled = false;
+
             }
         }
 
