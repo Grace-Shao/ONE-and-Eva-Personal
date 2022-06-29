@@ -42,7 +42,6 @@ public class Robot_Health : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         // die animation
 
         // disable the enemy
