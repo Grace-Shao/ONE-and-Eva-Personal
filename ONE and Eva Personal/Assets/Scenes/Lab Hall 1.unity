@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 556291400}
   - component: {fileID: 556291402}
   - component: {fileID: 556291401}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2358,7 +2358,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -7, y: -4, z: 0}
+  - first: {x: -6, y: -4, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 20
@@ -2368,7 +2368,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -6, y: -4, z: 0}
+  - first: {x: -5, y: -4, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 19
@@ -2378,7 +2378,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -5, y: -4, z: 0}
+  - first: {x: -4, y: -4, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 18
@@ -4699,7 +4699,7 @@ GameObject:
   - component: {fileID: 1434509364}
   - component: {fileID: 1434509366}
   - component: {fileID: 1434509365}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bounds (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5133,7 +5133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1705529519}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5348,7 +5348,7 @@ GameObject:
   - component: {fileID: 2135748429}
   - component: {fileID: 2135748431}
   - component: {fileID: 2135748430}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bounds (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,6 +14,8 @@ public class Robot_PatrolChase : MonoBehaviour
     public Transform groundDetection;
     public Transform lineOfSight;
 
+    LayerMask mask;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -24,11 +26,14 @@ public class Robot_PatrolChase : MonoBehaviour
         //********************Patrol script*******************//
         // moves right
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-
+       
+        // dont want raycasts to detect triggers, turn this back on when u do
+        Physics2D.queriesHitTriggers = false;
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, groundDetectDist);
         // if nothing is detected on ground
         if (groundInfo.collider == false)
         {
+            Debug.Log("ground collider for monster false");
             // if move right, then move it right
             if (movingRight == true)
             {
