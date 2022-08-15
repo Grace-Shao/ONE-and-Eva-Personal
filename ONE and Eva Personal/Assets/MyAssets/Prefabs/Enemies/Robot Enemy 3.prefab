@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1647130776113109679, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 1647130776113109682, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
       propertyPath: m_Color.b
       value: 0.735849
@@ -74,6 +78,10 @@ PrefabInstance:
     - target: {fileID: 1647130776270058936, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647130776757747422, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
