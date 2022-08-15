@@ -45,7 +45,7 @@ public class BossAttack : MonoBehaviour
 	}
 
 	// the attack is happening as an animation event in state machine
-    public void Attack()
+    public void Attack() // there r 2 attack ranges, one is in robot_chase script (if boss is chasing u, is she in range), one is here
 	{
 		Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;

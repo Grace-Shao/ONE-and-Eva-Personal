@@ -5,7 +5,7 @@ using UnityEngine;
 public class Robot_Chase : StateMachineBehaviour
 {
     public float speed = 50f;
-    public float attackRange = 1f;
+    public float attackRange = 1f; // later want to draw a ray to show attack range
 
     Transform player;
     Rigidbody2D rb;
@@ -33,6 +33,7 @@ public class Robot_Chase : StateMachineBehaviour
         {
             // attack
             animator.SetTrigger("attack");
+            Debug.Log("robot attack from robot chase script");
         }
 
         // if not on ground, go back to patrol
