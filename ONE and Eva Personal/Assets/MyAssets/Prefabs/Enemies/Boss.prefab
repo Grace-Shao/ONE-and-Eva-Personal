@@ -476,7 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61badfc6c1ab6f54cb3d22afb4ef926d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   isFlipped: 0
 --- !u!114 &5628955994494528193
 MonoBehaviour:
@@ -491,10 +490,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shockWaveVisualizer: {fileID: 5628955995350104186}
-  aoeDamage: 40
+  aoeDamage: 10
   aoeRadius: 2.5
-  attackDamage: 20
-  enragedAttackDamage: 40
+  attackDamage: 5
+  enragedAttackDamage: 20
   attackOffset: {x: 0, y: 0, z: 0}
   attackRange: 1
   attackMask:

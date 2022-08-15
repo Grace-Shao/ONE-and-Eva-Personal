@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1647130776113109679, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 1647130776113109682, guid: 36d8d0187fb7ccf48917e6cd1784e7d5, type: 3}
       propertyPath: m_Color.b
       value: 0.735849
