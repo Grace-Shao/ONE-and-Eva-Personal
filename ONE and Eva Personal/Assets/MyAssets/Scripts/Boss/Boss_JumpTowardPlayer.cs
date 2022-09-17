@@ -40,7 +40,7 @@ public class Boss_JumpTowardPlayer : MonoBehaviour
         {
             // AddForce, Force is applied continuously along the direction of the force vector.
             //forceMode impulse, changes velocity, affected by mass, applies 
-            bossRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight * 3), ForceMode2D.Impulse); 
+            bossRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse); 
         }
     }
 
