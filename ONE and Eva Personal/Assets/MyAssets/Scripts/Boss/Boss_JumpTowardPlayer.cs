@@ -10,11 +10,13 @@ public class Boss_JumpTowardPlayer : MonoBehaviour
     [SerializeField] Vector2 boxSize;
     [SerializeField] LayerMask groundLayer;
     private Rigidbody2D bossRB;
+    private Animator animator;
     private bool isGrounded;
 
     void Start()
     {
         bossRB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,7 +42,8 @@ public class Boss_JumpTowardPlayer : MonoBehaviour
         {
             // AddForce, Force is applied continuously along the direction of the force vector.
             //forceMode impulse, changes velocity, affected by mass, applies 
-            bossRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse); 
+            bossRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
+            animator.SetBool("IsJumping", true);
         }
     }
 

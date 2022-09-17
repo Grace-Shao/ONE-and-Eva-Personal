@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss_Jump_Attack : StateMachineBehaviour
 {
-    public float speed = 50f;
+    public float speed = 5f;
     public float attackRange = 1f;
 
     Transform player;
@@ -22,7 +22,7 @@ public class Boss_Jump_Attack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-        Vector2 target = new Vector2(player.position.x, player.position.y);    // y is player position this time bc we WANT the boss to move down
+        Vector2 target = new Vector2(player.position.x, player.position.y + 1);    // y is player position this time bc we WANT the boss to move down //added +1 bc I think the y pos is too low slowing down the boss
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);  // moves to target pos
         //Debug.Log(newPos);
         rb.MovePosition(newPos);
