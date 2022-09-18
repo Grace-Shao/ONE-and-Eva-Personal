@@ -45,6 +45,10 @@ public class Boss_JumpTowardPlayer : MonoBehaviour
             bossRB.AddForce(new Vector2(distanceFromPlayer, jumpHeight), ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
         }
+        if(isGrounded == false)
+        {
+            animator.SetBool("IsJumping", false);
+        }
     }
 
     //draw the ground check box
