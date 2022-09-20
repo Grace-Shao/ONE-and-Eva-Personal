@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_Jump_Attack : StateMachineBehaviour
 {
+    // this script makes the boss randomly attack even if the player is not in range
     public float speed = 5f;
     public float attackRange = 1f;
 
@@ -13,7 +14,6 @@ public class Boss_Jump_Attack : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
         boss = animator.GetComponent<Boss>();
     }
@@ -22,17 +22,7 @@ public class Boss_Jump_Attack : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-        Vector2 target = new Vector2(player.position.x, player.position.y + 1);    // y is player position this time bc we WANT the boss to move down //added +1 bc I think the y pos is too low slowing down the boss
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);  // moves to target pos
-        //Debug.Log(newPos);
-        rb.MovePosition(newPos);
-
-        // if in attack range 
-        if (Vector2.Distance(player.position, rb.position) <= attackRange)
-        {
-            // attack
-            animator.SetTrigger("Attack");
-        }
+        animator.SetTrigger("Attack");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -40,6 +30,7 @@ public class Boss_Jump_Attack : StateMachineBehaviour
     {
         // when attack ends, reset the attack bool in animator
         animator.ResetTrigger("Attack");
+        animator.SetBool("isJumping", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

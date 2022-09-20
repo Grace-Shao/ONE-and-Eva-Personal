@@ -771,6 +771,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 718029091}
+    - target: {fileID: 1659434870625513929, guid: 0b0d61ad1c7c4914eb4d9402b87d9b77, type: 3}
+      propertyPath: boxSize.y
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 5628955993624180932, guid: 0b0d61ad1c7c4914eb4d9402b87d9b77, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -979,6 +983,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8192
+  isGrounded: 0
 --- !u!50 &1220393436
 Rigidbody2D:
   serializedVersion: 4
