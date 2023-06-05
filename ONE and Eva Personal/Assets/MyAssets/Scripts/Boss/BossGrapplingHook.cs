@@ -9,10 +9,12 @@ public class BossGrapplingHook : MonoBehaviour
     private Transform player;
     //public DistanceJoint2D distanceJoint;
     private Rigidbody2D rb;
+    private int enemyLayer = 7;
 
     // customizable
     [SerializeField] private int grappleSpeed;
     [SerializeField] private float attackRange = 2;
+    [SerializeField] private float chainRange = 10;
     // enumerator to make it more efficient than update
     void Start()
     {
@@ -23,33 +25,37 @@ public class BossGrapplingHook : MonoBehaviour
     void FixedUpdate()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        /*if (Input.GetKeyDown(KeyCode.G))
-        {*/
-        Debug.Log("held G");
+        // if the boss can "see" the player and nothing else is blocking it's direction
         Vector2 distToPlayer = player.position - transform.position;
-        if (distToPlayer.magnitude >= attackRange)
+        RaycastHit2D detectPlayerRay = Physics2D.Raycast(transform.position, distToPlayer.normalized, chainRange, ~(1 << enemyLayer));
+        Debug.DrawRay(transform.position, distToPlayer.normalized * chainRange, Color.red);
+        Debug.Log("boss chain detects " + detectPlayerRay.collider.tag);
+        if (detectPlayerRay.collider.CompareTag("Player"))
         {
-            lineRenderer.enabled = true;
-            // FROM
-            lineRenderer.SetPosition(1, transform.position);
-            // TO
-            lineRenderer.SetPosition(0, player.position);
-            transform.position = Vector2.MoveTowards(transform.position, player.position, 5 * Time.deltaTime);
-        } else
-        {
-            if (lineRenderer.enabled)
+            Debug.Log("boss chain detects " + detectPlayerRay.collider.tag);
+            if (distToPlayer.magnitude >= attackRange)
             {
-                lineRenderer.enabled = false;
+                lineRenderer.enabled = true;
+                // FROM
+                lineRenderer.SetPosition(1, transform.position);
+                // TO
+                lineRenderer.SetPosition(0, player.position);
+                transform.position = Vector2.MoveTowards(transform.position, player.position, 5 * Time.deltaTime);
             }
-        }
-            
-        /*} else if (Input.GetKeyUp(KeyCode.G))
-        {
-            //distanceJoint.enabled = false;
-            lineRenderer.enabled = false;
-        }*/
-
+            else
+            {
+                if (lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = false;
+                }
+            }
+        }        
     }
+
+    /*private RaycastHit2D CheckRayHitPlayer()
+    {
+
+    }*/
     /*public IEnumerator GrappleCoroutine()
     {
         
