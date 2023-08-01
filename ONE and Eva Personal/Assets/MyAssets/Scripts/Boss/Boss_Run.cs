@@ -24,7 +24,7 @@ public class Boss_Run : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-        Vector2 target = new Vector2(player.position.x, rb.position.y );    // y is boss position bc we don't want the boss to move down
+        Vector2 target = new Vector2(player.position.x, rb.position.y);    // y is boss position bc we don't want the boss to move down
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);  // moves to target pos
         //Debug.Log(newPos);
         rb.MovePosition(newPos);
