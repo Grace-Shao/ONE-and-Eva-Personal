@@ -7,6 +7,7 @@ public class Boss_Grapple : StateMachineBehaviour
     // essentials
     private LineRenderer lineRenderer;
     private Transform player;
+    private Boss boss;
     private Rigidbody2D rb;
     private int enemyLayer = 7;
 
@@ -18,11 +19,13 @@ public class Boss_Grapple : StateMachineBehaviour
     {
         lineRenderer = animator.GetComponent<LineRenderer>();
         rb = animator.GetComponent<Rigidbody2D>();
+        boss = animator.GetComponent<Boss>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        boss.LookAtPlayer();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 distToPlayer = player.position - animator.transform.position;
         RaycastHit2D detectPlayerRay = Physics2D.Raycast(animator.transform.position, distToPlayer.normalized, chainRange, ~(1 << enemyLayer));
