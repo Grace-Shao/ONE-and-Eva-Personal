@@ -100,7 +100,6 @@ public class BossAttack : MonoBehaviour
 		{
 			if (c.GetComponent<PlayerHealth>())
 			{
-				Debug.Log("Colliders found");
 				c.GetComponent<PlayerHealth>().TakeDamage(aoeDamage);
 			}
 		}
