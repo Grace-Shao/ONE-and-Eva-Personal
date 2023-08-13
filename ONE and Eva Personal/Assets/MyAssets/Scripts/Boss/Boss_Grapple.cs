@@ -28,30 +28,21 @@ public class Boss_Grapple : StateMachineBehaviour
         boss.LookAtPlayer();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 distToPlayer = player.position - animator.transform.position;
-        RaycastHit2D detectPlayerRay = Physics2D.Raycast(animator.transform.position, distToPlayer.normalized, chainRange, ~(1 << enemyLayer));
+        //RaycastHit2D detectPlayerRay = Physics2D.Raycast(animator.transform.position, distToPlayer.normalized, chainRange, ~(1 << enemyLayer));
         // if the boss can "see" the player and nothing else is blocking it's direction
-        Debug.DrawRay(animator.transform.position, distToPlayer.normalized * chainRange, Color.red);
-        if (detectPlayerRay.collider.CompareTag("Player"))
+        //Debug.DrawRay(animator.transform.position, distToPlayer.normalized * chainRange, Color.red);
+        /*if (detectPlayerRay.collider.CompareTag("Player"))
+        {*/
+        if (distToPlayer.magnitude >= attackRange)
         {
-            Debug.Log("boss chain detects " + detectPlayerRay.collider.tag);
-            if (distToPlayer.magnitude >= attackRange)
-            {
-                lineRenderer.enabled = true;
-                // Maybe will implement LineDraw in the future
-                //StartCoroutine(LineDraw(transform.position, player.position));
-                // FROM
-                lineRenderer.SetPosition(1, animator.transform.position);
-                // TO
-                lineRenderer.SetPosition(0, player.position);
-                animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, 5 * Time.deltaTime);
-            }
-            else
-            {
-                if (lineRenderer.enabled)
-                {
-                    lineRenderer.enabled = false;
-                }
-            }
+            lineRenderer.enabled = true;
+            // Maybe will implement LineDraw in the future
+            //StartCoroutine(LineDraw(transform.position, player.position));
+            // FROM
+            lineRenderer.SetPosition(1, animator.transform.position);
+            // TO
+            lineRenderer.SetPosition(0, player.position);
+            animator.transform.position = Vector2.MoveTowards(animator.transform.position, player.position, 5 * Time.deltaTime);
         }
         else
         {
@@ -60,6 +51,14 @@ public class Boss_Grapple : StateMachineBehaviour
                 lineRenderer.enabled = false;
             }
         }
+        /*}
+        else
+        {
+            if (lineRenderer.enabled)
+            {
+                lineRenderer.enabled = false;
+            }
+        }*/
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

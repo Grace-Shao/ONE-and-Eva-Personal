@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour
     {
 		time += (float)Math.Ceiling(Time.deltaTime);
 		time = (float)Math.Ceiling(time);
-		if (time % 1000 == 0)
+		if (time % 5000 == 0)
         {
 			Debug.Log("Grappling");
 			StartCoroutine(grappleForXSec(5));
