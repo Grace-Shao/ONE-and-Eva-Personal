@@ -11,17 +11,21 @@ public class Boss : MonoBehaviour
 	private Animator animator;
 	float time = 0;
 
+	[SerializeField] private Transform groundCheck;
+	[SerializeField] private LayerMask whatIsGroundMask;
 	public bool isFlipped = false;
 
     public void Start()
     {
 		player = GameObject.FindWithTag("Player").transform;
 		animator = GetComponent<Animator>();
+		animator.SetBool("isGrounded", false);
     }
 
     public void Update()
     {
 		GrappleRandomly();
+		checkGrounded();
     }
     // this method gets called in other scripts
     public void LookAtPlayer()
@@ -51,7 +55,6 @@ public class Boss : MonoBehaviour
     {
 		time += (float)Math.Ceiling(Time.deltaTime);
 		time = (float)Math.Ceiling(time);
-		Debug.Log("time" + time);
 		if (time % 1000 == 0)
         {
 			Debug.Log("Grappling");
@@ -65,5 +68,24 @@ public class Boss : MonoBehaviour
 		yield return new WaitForSeconds(x);
 		animator.SetBool("isGrapple", false);
 	}
+
+	// checks if boss is grounded
+	private void checkGrounded()
+    {
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, .2f, whatIsGroundMask);
+		if (colliders.Length == 0)
+        {
+			animator.SetBool("isGrounded", false);
+		}
+		for (int i = 0; i < colliders.Length; i++)
+        {
+			// if collides w something other then itself
+			if (colliders[i].gameObject != gameObject)
+			{
+				Debug.Log("boss collided");
+				animator.SetBool("isGrounded", true);
+			}
+        }
+    }
 
 }
